@@ -33,7 +33,10 @@ class Registro0000(Registro):
         Campo(17, 'TIP_ECD'),
         Campo(18, 'COD_SCP'),
         Campo(19, 'IDENT_MF'),
-        Campo(20, 'IND_ESC_CONS')
+        Campo(20, 'IND_ESC_CONS'),
+        Campo(21, 'IND_CENTRALIZADA'),
+        Campo(22, 'IND_MUDANC_PC'),
+        Campo(23, 'COD_PLAN_REF'),  
     ]
 
 
@@ -45,6 +48,7 @@ class Registro0001(Registro):
         CampoFixo(1, 'REG', '0001'),
         Campo(2, 'IND_DAD'),
     ]
+
 
 
 class Registro0007(Registro):
@@ -296,6 +300,7 @@ class RegistroI200(Registro):
         CampoData(3, 'DT_LCTO'),
         CampoNumerico(4, 'VL_LCTO', precisao=2),
         Campo(5, 'IND_LCTO'),
+        Campo(6, 'DT_LCTO_EXT'),
     ]
 
 
@@ -449,16 +454,17 @@ class RegistroJ100(Registro):
     campos = [
         CampoFixo(1, 'REG', 'J100'),
         Campo(2, 'COD_AGL'),
-        CampoNumerico(3, 'NIVEL_AGL'),
-        Campo(4, 'IND_GRP_BAL'),
-        Campo(5, 'DESCR_COD_AGL'),
-        CampoNumerico(6, 'VL_CTA', precisao=2),
-        Campo(7, 'IND_DC_BAL'),
+        Campo(3, 'IND_COD_AGL'),
+        CampoNumerico(4, 'NIVEL_AGL'),
+        Campo(5, 'COD_AGL_SUP'),
+        Campo(6, 'IND_GRP_BAL'),
+        Campo(7, 'DESCR_COD_AGL'),
         CampoNumerico(8, 'VL_CTA_INI', precisao=2),
-        Campo(9, 'IND_DC_BAL_INI'),
-        Campo(10, 'NOTA_EXP_REF'),
+        Campo(9, 'IND_DC_CTA_INI'),
+        CampoNumerico(10, 'VL_CTA_FIN', precisao=2),
+        Campo(11, 'IND_DC_CTA_FIN'),
+        Campo(12, 'NOTA_EXP_REF'),
     ]
-
 
 class RegistroJ150(Registro):
     """
@@ -466,16 +472,47 @@ class RegistroJ150(Registro):
     """
     campos = [
         CampoFixo(1, 'REG', 'J150'),
-        Campo(2, 'COD_AGL'),
-        CampoNumerico(3, 'NIVEL_AGL'),
+        Campo(2, 'NU_ORDEM'),
+        Campo(3, 'COD_AGL'),
+        Campo(4, 'IND_COD_AGL'),
+        CampoNumerico(5, 'NIVEL_AGL'),
+        Campo(6, 'COD_AGL_SUP'),       
+        Campo(7, 'DESCR_COD_AGL'),
+        CampoNumerico(8, 'VL_CTA_INI_', precisao=2),
+        Campo(9, 'IND_DC_CTA_INI'),
+        CampoNumerico(10, 'VL_CTA_FIN', precisao=2),
+        Campo(11, 'IND_DC_CTA_FIN'),
+        Campo(12, 'IND_GRP_DRE'),
+        Campo(13, 'NOTA_EXP_REF'),
+    ]
+
+class RegistroJ210(Registro):
+    """
+    DLPA
+    """
+    campos = [
+        CampoFixo(1, 'REG', 'J210'),
+        Campo(2, 'IND_TIP'),
+        Campo(3, 'COD_AGL'),
         Campo(4, 'DESCR_COD_AGL'),
-        CampoNumerico(5, 'VL_CTA', precisao=2),
-        Campo(6, 'IND_VL'),
-        CampoNumerico(7, 'VL_CTA_ULT_DRE', precisao=2),
-        Campo(8, 'IND_VL_ULT_DRE'),
+        CampoNumerico(5, 'VL_CTA_INI', precisao=2),
+        Campo(6, 'IND_DC_CTA_INI'),
+        CampoNumerico(7, 'VL_CTA_FIN', precisao=2),
+        Campo(8, 'IND_DC_CTA_FIN'),
         Campo(9, 'NOTA_EXP_REF'),
     ]
 
+class RegistroJ215(Registro):
+    """
+    FATO CONTÁBIL
+    """
+    campos = [
+        CampoFixo(1, 'REG', 'J215'),
+        Campo(2, 'COD_HIST_FAT'),
+        Campo(3, 'DESC_FAT'),
+        CampoNumerico(4, 'VL_FAT_CONT', precisao=2),
+        Campo(5, 'IND_DC_FAT'),
+    ]
 
 class RegistroJ800(Registro):
     """
@@ -483,8 +520,25 @@ class RegistroJ800(Registro):
     """
     campos = [
         CampoFixo(1, 'REG', 'J800'),
-        Campo(2, 'ARQ_RTF'),
-        Campo(3, 'IND_FIM_RTF'),
+        Campo(2, 'TIPO_DOC'),
+        Campo(3, 'DESC_RTF'),
+        Campo(4, 'HASH_RTF'),
+        Campo(5, 'ARQ_RTF'),
+        Campo(6, 'IND_FIM_RTF'),
+    ]
+
+class RegistroJ801(Registro):
+    """
+    Termo de Verificação para Fins de Substituição da ECD
+    """
+    campos = [
+        CampoFixo(1, 'REG', 'J800'),
+        Campo(2, 'TIPO_DOC'),
+        Campo(3, 'DESC_RTF'),
+        Campo(4, 'COD_MOT_SUBS'),
+        Campo(5, 'HASH_RTF'),
+        Campo(6, 'ARQ_RTF'),
+        Campo(7, 'IND_FIM_RTF'),
     ]
 
 
@@ -521,6 +575,35 @@ class RegistroJ930(Registro):
         CampoAlfanumerico(10, 'NUM_SEQ_CRC'),
         CampoData(11, 'DT_CRC'),
         CampoAlfanumerico(12, 'IND_RESP_LEGAL')
+    ]
+
+class RegistroJ932(Registro):
+    """
+    SIGNATÁRIOS DO TERMO DE VERIFICAÇÃO PARA FINS DE SUSBTITUIÇÃO DA ECD
+    """
+    campos = [
+        CampoFixo(1, 'REG', 'J932'),
+        CampoAlfanumerico(2, 'IDENT_NOM_T'),
+        CampoAlfanumerico(3, 'IDENT_CPF_CNPJ_T', tamanho=14),
+        CampoAlfanumerico(4, 'IDENT_QUALIF_T'),
+        CampoAlfanumerico(5, 'COD_ASSIN_T', tamanho=3),
+        CampoAlfanumerico(6, 'IND_CRC_T'),
+        CampoAlfanumerico(7, 'EMAIL_T'),
+        CampoAlfanumerico(8, 'FONE_T'),
+        CampoAlfanumerico(9, 'UF_CRC_T'),
+        CampoAlfanumerico(10, 'NUM_SEQ_CRC_T'),
+        CampoData(11, 'DT_CRC_T'),
+    ]
+
+class RegistroJ935(Registro):
+    """
+    Identificação dos Auditores Independentes
+    """
+    campos = [
+        CampoFixo(1, 'REG', 'J935'),
+        CampoAlfanumerico(2, 'NI_CPF_CNPJ', tamanho=14),
+        CampoAlfanumerico(3, 'NOME_AUDITOR_FIRMA'),
+        CampoAlfanumerico(4, 'COD_CVM_AUDITOR'),
     ]
 
 

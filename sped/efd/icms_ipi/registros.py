@@ -39,6 +39,14 @@ class Registro0001(Registro):
         Campo(2, 'IND_MOV'),
     ]
 
+class Registro0002(Registro):
+    """
+    CLASSIFICAÇÃO DO ESTABELECIMENTO INDUSTRIAL OU EQUIPARADO A INDUSTRIAL
+    """
+    campos = [
+        CampoFixo(1, 'REG', '0002'),
+        Campo(2, 'CLAS_ESTAB_IND'),
+    ]
 
 class Registro0005(Registro):
     """
@@ -199,6 +207,7 @@ class Registro0220(Registro):
         CampoFixo(1, 'REG', '0220'),
         Campo(2, 'UNID_CONV'),
         Campo(3, 'FAT_CONV'),
+        Campo(4, 'COD_BARRA')
     ]
 
 
@@ -443,6 +452,7 @@ class RegistroC113(Registro):
         Campo(7, 'SUB'),
         Campo(8, 'NUM_DOC'),
         Campo(9, 'DT_DOC'),
+        Campo(10, 'CHV_DOCe')
     ]
 
 
@@ -1087,8 +1097,20 @@ class RegistroC500(Registro):
         Campo(25, 'VL_COFINS'),
         Campo(26, 'TP_LIGACAO'),
         Campo(27, 'COD_GRUPO_TENSAO'),
+        Campo(28, 'CHV_DOCe'), 
+        Campo(29, 'FIN_DOCe'),
+        Campo(30, 'CHV_DOCe_REF'),
+        Campo(31, 'IND_DEST'), 
+        Campo(32, 'COD_MUN_DEST'),
+        Campo(33, 'COD_CTA'), 
+        Campo(34, 'COD_MOD_DOC_REF'),
+        Campo(35, 'HASH_DOC_REF'),
+        Campo(36, 'SER_DOC_REF'),
+        Campo(37, 'NUM_DOC_REF'),
+        Campo(38, 'MES_DOC_REF'),    
+        Campo(39, 'ENER_INJET'), 
+        Campo(40, 'OUTRAS_DED'),
     ]
-
 
 class RegistroC510(Registro):
     """
@@ -2711,6 +2733,7 @@ class Registro1010(Registro):
         Campo(11, 'IND_GIAF1'),
         Campo(12, 'IND_GIAF3'),
         Campo(13, 'IND_GIAF4'),
+        Campo(14, 'IND_REST_RESSARC_COMPL_ICMS'),
     ]
 
 
@@ -3103,7 +3126,8 @@ class Registro1921(Registro):
     campos = [
         CampoFixo(1, 'REG', '1921'),
         Campo(2, 'COD_AJ_APUR'),
-        Campo(3, 'VL_AJ_APUR'),
+        Campo(3, 'DESCR_COMPL_AJ'),
+        Campo(4, 'VL_AJ_APUR'),
     ]
 
 
