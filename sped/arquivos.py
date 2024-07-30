@@ -20,9 +20,9 @@ class ArquivoDigital(object):
         self._blocos = OrderedDict()
 
     def readfile(self, filename):
-        with open(filename) as spedfile:
+        with open(filename, 'r', encoding='utf8') as spedfile:
             for line in [line.rstrip('\r\n') for line in spedfile]:
-                self.read_registro(line.decode('utf8'))
+                self.read_registro(line)
 
     def read_registro(self, line):
         reg_id = line.split('|')[1]

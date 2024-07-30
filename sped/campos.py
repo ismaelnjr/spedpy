@@ -178,18 +178,27 @@ class CampoNumerico(Campo):
 
 
 class CampoData(Campo):
-    def __init__(self, indice, nome, obrigatorio=False):
+
+    def __init__(self, indice, nome, obrigatorio=False, formato_data='%d%m%Y'):
         super().__init__(indice, nome, obrigatorio)
+        self._formato_data = formato_data
 
     def get(self, registro):
         valor = super().get(registro)
         if not valor:
             return None
-        return datetime.strptime(valor, '%d%m%Y').date()
+        return datetime.strptime(valor, self._formato_data).date()
 
     def set(self, registro, valor):
         if isinstance(valor, date):
-            super().set(registro, valor.strftime('%d%m%Y'))
+            super().set(registro, valor.strftime(self._formato_data))
+        elif isinstance(valor, str):     
+            try:
+                # Tenta converter a string para um objeto datetime 
+                datetime.strptime(valor, self._formato_data)
+                super().set(registro, valor)
+            except ValueError:
+                raise FormatoInvalidoError(registro, self.nome)
         elif not valor:
             super().set(registro, None)
         else:

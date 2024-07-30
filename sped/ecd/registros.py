@@ -120,6 +120,24 @@ class Registro0990(Registro):
         CampoNumerico(2, 'QTD_LIN_0'),
     ]
 
+class RegistroC001(Registro):
+    """
+    ABERTURA DO BLOCO C
+    """
+    campos = [
+        CampoFixo(1, 'REG', 'C001'),
+        Campo(2, 'IND_DAD'),
+    ]
+
+
+class RegistroC990(Registro):
+    """
+    REGISTROS DO ARQUIVO
+    """
+    campos = [
+        CampoFixo(1, 'REG', 'C990'),
+        Campo(2, 'QTD_LIN_C'),        
+    ]
 
 class RegistroI001(Registro):
     """

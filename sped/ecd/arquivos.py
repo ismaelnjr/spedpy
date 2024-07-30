@@ -7,6 +7,7 @@ from .blocos import Bloco0
 from .blocos import BlocoI
 from .blocos import BlocoJ
 from .blocos import Bloco9
+from .blocos import BlocoC
 from .registros import Registro0000
 from .registros import Registro9900
 from .registros import Registro9999
@@ -26,6 +27,7 @@ class ArquivoDigital(arquivos.ArquivoDigital):
         self._blocos['I'] = BlocoI('I')
         self._blocos['J'] = BlocoJ('J')
         self._blocos['9'] = Bloco9('9')
+        self._blocos['C'] = BlocoC('C')
 
     def prepare(self):
         bloco_9 = self._blocos['9'] = Bloco9('9')
@@ -40,6 +42,9 @@ class ArquivoDigital(arquivos.ArquivoDigital):
                 bloco.registro_encerramento.QTD_LIN_0 = sum(
                     [x for x in regs.values()]) + 1
                 regs['0000'] = 1
+            if bloco == self._blocos['C']:
+                bloco.registro_encerramento.QTD_LIN_C = sum(
+                    [x for x in regs.values()])
             if bloco == self._blocos['I']:
                 bloco.registro_encerramento.QTD_LIN_I = sum(
                     [x for x in regs.values()])

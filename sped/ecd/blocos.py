@@ -9,7 +9,8 @@ from .registros import RegistroJ001
 from .registros import RegistroJ990
 from .registros import Registro9001
 from .registros import Registro9990
-
+from .registros import RegistroC001
+from .registros import RegistroC990
 
 class Bloco0(Bloco):
     """
@@ -24,6 +25,12 @@ class Bloco0(Bloco):
         registro[2] += 1
         return registro
 
+class BlocoC(Bloco):
+    """
+    Informações Recuperadas da Escrituração Contábil Anterior
+    """
+    registro_abertura = RegistroC001()
+    registro_encerramento = RegistroC990()
 
 class BlocoI(Bloco):
     """
