@@ -11,10 +11,12 @@ from sped.lcdpr.registros import Registro9999
 
 
 class ArquivoDigital(arquivos.ArquivoDigital):
-    registro_abertura = Registro0000
-    registro_encerramento = Registro9999
-    registros = registros
-    blocos = blocos
+    
+    class Meta:
+        registro_abertura = Registro0000
+        registro_encerramento = Registro9999
+        registros = registros
+        blocos = blocos
 
     def __init__(self):
         super(ArquivoDigital, self).__init__()

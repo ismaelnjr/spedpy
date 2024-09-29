@@ -8,15 +8,16 @@ from .registros import RegistroIndefinido
 
 
 class ArquivoDigital(object):
-    registros = None
-    blocos = None
-
-    registro_abertura = RegistroIndefinido
-    registro_encerramento = RegistroIndefinido
+    
+    class Meta:
+        registros = None
+        blocos = None
+        registro_abertura = RegistroIndefinido
+        registro_encerramento = RegistroIndefinido
 
     def __init__(self):
-        self._registro_abertura = self.registro_abertura()
-        self._registro_encerramento = self.registro_encerramento()
+        self._registro_abertura = self.Meta.registro_abertura()
+        self._registro_encerramento = self.Meta.registro_encerramento()
         self._blocos = OrderedDict()
 
     def readfile(self, filename):
@@ -28,16 +29,16 @@ class ArquivoDigital(object):
         reg_id = line.split('|')[1]
 
         try:
-            registro_class = getattr(self.__class__.registros,
+            registro_class = getattr(self.__class__.Meta.registros,
                                      'Registro' + reg_id)
         except AttributeError:
             raise RuntimeError(u"Arquivo inválido para EFD - PIS/COFINS")
 
         registro = registro_class(line)
 
-        if registro.__class__ == self.__class__.registro_abertura:
+        if registro.__class__ == self.__class__.Meta.registro_abertura:
             self._registro_abertura = registro
-        elif registro.__class__ == self.__class__.registro_encerramento:
+        elif registro.__class__ == self.__class__.Meta.registro_encerramento:
             self._registro_encerramento = registro
         else:
             bloco_id = reg_id[0]
@@ -61,3 +62,23 @@ class ArquivoDigital(object):
         buff = StringIO()
         self.write_to(buff)
         return buff.getvalue()
+    
+    @property
+    def abertura(self):
+        return self._registro_abertura
+    
+    @property
+    def encerramento(self):
+        return self._registro_encerramento
+    
+    @property
+    def registros(self):
+        registros = []
+        for bloco in self._blocos.values():
+            regs = bloco.registros
+            registros.extend(regs)
+        return [self._registro_abertura] + registros + [self._registro_encerramento]
+    
+    def __str__(self) -> str:
+        buffer = [f'{registro}\n' for registro in self.registros]
+        return ''.join(buffer)
