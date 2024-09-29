@@ -9,10 +9,11 @@ rmdir /s /q *.egg-info
 
 REM 2. Gerar novo pacote
 echo Gerando pacote...
-python setup.py sdist
+python setup.py sdist 
 
 REM 3. Fazer upload para o PyPI
 echo Fazendo upload para o PyPI...
+pause
 twine upload dist/*
 
 REM 4. Finalizando

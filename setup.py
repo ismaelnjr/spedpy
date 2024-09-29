@@ -15,7 +15,7 @@ setup(name='spedpy',
     author_email='ismaelnjr@icloud.com.br',
     keywords='sped fiscal receita federal',
     description=u'Biblioteca para geração dos arquivos do Sistema Público de Escrituração Digital (SPED) para Python',
-    packages=find_packages(exclude=['contrib', 'docs', 'test*']),
+    packages=find_packages(exclude=['test']),
     include_package_data=True,
     url='https://github.com/Trust-Code/python-sped',
     package_data={
