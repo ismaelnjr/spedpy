@@ -17,7 +17,7 @@ setup(name='spedpy',
     description=u'Biblioteca para geração dos arquivos do Sistema Público de Escrituração Digital (SPED) para Python',
     packages=find_packages(exclude=['contrib', 'docs', 'test*']),
     include_package_data=True,
-    url='https://github.com/Trust-Code/python-sped'
+    url='https://github.com/Trust-Code/python-sped',
     package_data={
         'sped': ['leiautes/*'],
     },
