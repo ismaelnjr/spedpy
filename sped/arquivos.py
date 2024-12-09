@@ -20,8 +20,8 @@ class ArquivoDigital(object):
         self._registro_encerramento = self.Meta.registro_encerramento()
         self._blocos = OrderedDict()
 
-    def readfile(self, filename):
-        with open(filename, 'r', encoding='utf8') as spedfile:
+    def readfile(self, filename, encoding='utf8'):
+        with open(filename, 'r', encoding=encoding) as spedfile:
             for line in [line.rstrip('\r\n') for line in spedfile]:
                 self.read_registro(line)
 
