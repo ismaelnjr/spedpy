@@ -38,12 +38,11 @@ class RegistroN100(Registro):
         Campo(11, 'NOME_DEST'),
         Campo(12, 'UF'),
         CampoNumerico(13, 'VALOR_NFE', precisao=2),
-        Campo(14, ''),        
-        Campo(15, 'MES_ANO'),
-        CampoData(16, 'DATA_IMPORTACAO'),
-        Campo(17, 'STATUS_NFE'),
-        Campo(18, 'X_USER1'),
-        Campo(19, 'X_USER2'),
+        Campo(14, 'MES_ANO'),
+        CampoData(15, 'DATA_IMPORTACAO'),
+        Campo(16, 'STATUS_NFE'),
+        Campo(17, 'X_USER1'),
+        Campo(18, 'X_USER2'),
     ]
 
 class RegistroN140(Registro):
@@ -136,7 +135,7 @@ class RegistroZ100(Registro):
         Campo(6, 'TIPO_EVENTO'),    
         Campo(7, 'DESC_EVENTO'),  
         Campo(8, 'MOTIVO'),  
-        Campo(8, 'PROTOCOLO'), 
+        Campo(9, 'PROTOCOLO'), 
     ]
 
 class RegistroZ990(Registro):
