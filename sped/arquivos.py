@@ -32,7 +32,7 @@ class ArquivoDigital(object):
             registro_class = getattr(self.__class__.Meta.registros,
                                      'Registro' + reg_id)
         except AttributeError:
-            raise RuntimeError(u"Arquivo inválido para EFD - PIS/COFINS")
+            raise RuntimeError(f"Registro{reg_id} inexistente em {self.__class__.Meta.registros}")
 
         registro = registro_class(line)
 

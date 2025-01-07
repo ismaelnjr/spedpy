@@ -778,6 +778,16 @@ class RegistroC190(Registro):
         Campo(12, 'COD_OBS'),
     ]
 
+class RegistroC191(Registro):
+    """
+    INFORMAÇÕES DO FUNDO DE COMBATE À POBREZA - FCP - NA NF-e (CÓDIGO 55) E NA NFC-e (CÓDIGO 65)
+    """
+    campos = [
+        CampoFixo(1, 'REG', 'C191'),
+        CampoNumerico(2, 'VL_FCP_OP', precisao=2),
+        CampoNumerico(3, 'VL_FCP_ST', precisao=2),
+        CampoNumerico(4, 'VL_FCP_RET', precisao=2)        
+    ]
 
 class RegistroC195(Registro):
     """
@@ -2604,6 +2614,14 @@ class RegistroK001(Registro):
         Campo(2, 'IND_MOV'),
     ]
 
+class RegistroK010(Registro):
+    """
+    INFORMAÇÃO SOBRE O TIPO DE LEIAUTE (SIMPLIFICADO / COMPLETO)
+    """
+    campos = [
+        CampoFixo(1, 'REG', 'K010'),
+        Campo(2, 'IND_TP_LEIAUTE'),
+    ]
 
 class RegistroK100(Registro):
     """
