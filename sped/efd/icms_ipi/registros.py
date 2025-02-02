@@ -210,6 +210,15 @@ class Registro0220(Registro):
         Campo(4, 'COD_BARRA')
     ]
 
+class Registro0221(Registro):
+    """
+    CORRELAÇÃO ENTRE CÓDIGOS DE ITENS COMERCIALIZADOS
+    """
+    campos = [
+        CampoFixo(1, 'REG', '0221'),
+        Campo(2, 'COD_ITEM_ATOMICO'),
+        Campo(3, 'QTD_CONTIDA')
+    ]
 
 class Registro0300(Registro):
     """
