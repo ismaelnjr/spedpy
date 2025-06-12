@@ -23,7 +23,7 @@ class RegistroN001(Registro):
 class RegistroN100(Registro):
     """
     CABEÇALHO DA NFE (NIVEL 1) (1:N)
-    """
+    """    
     campos = [
         CampoFixo(1, 'REG', 'N100'),
         Campo(2, 'CNPJ_EMIT'),
